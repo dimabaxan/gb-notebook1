@@ -13,7 +13,7 @@ public class UserView {
         this.userController = userController;
     }
 
-    public void run(){
+    public void run() {
         Commands com;
 
         while (true) {
@@ -38,6 +38,12 @@ public class UserView {
                 case UPDATE:
                     String userId = prompt("Enter user id: ");
                     userController.updateUser(userId, createUser());
+                    break;
+                case DELETE:
+                    String delUserId = prompt("Enter user id: ");
+                    boolean status = userController.deleteUser(Long.parseLong(delUserId));
+                    System.out.println("Successfully deleted status: " + status);
+                    break;
             }
         }
     }
